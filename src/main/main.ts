@@ -1,5 +1,3 @@
-/* eslint global-require: off, no-console: off, promise/always-return: off */
-
 /**
  * This module executes inside of electron's main process. You can start
  * electron renderer process from here and communicate with the other processes
@@ -29,6 +27,10 @@ ipcMain.on('ipc-example', async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
   console.log(msgTemplate(arg));
   event.reply('ipc-example', msgTemplate('pong'));
+});
+ipcMain.on('ipc-example-2', async (event, arg) => {
+  const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
+  console.log(msgTemplate(arg));
 });
 
 if (process.env.NODE_ENV === 'production') {
